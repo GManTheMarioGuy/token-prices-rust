@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build
+      run: cargo build --verbose
+
+    - name: Run application
+      run: cargo run
+
+    - name: Commit changes
+      uses: endbug/add-and-commit@v9
+      with:
+        author_name: "GManTheMarioGuy"
+        author_email: "gman36147@gmail.com"
+        message: "ref prices fetching"
+        add: "ref-prices.json"
+        push: true

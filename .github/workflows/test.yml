@@ -9,8 +9,8 @@ on:
     - cron: "*/15 * * * *"
   workflow_dispatch:
 
-env:
-  CARGO_TERM_COLOR: always
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -18,7 +18,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    
+
+    - name: Set up Rust 1.85.1
+      uses: actions/setup-rust@v1
+      with:
+        rust-version: '1.85.1'
+
+    - name: Cache cargo dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-
+
     - name: Build
       run: cargo build --verbose
 
@@ -26,9 +42,11 @@ jobs:
       run: cargo run
 
     - name: Commit changes
-      uses: EndBug/add-and-commit@v9
+      uses: endbug/add-and-commit@v9
       with:
         author_name: "GManTheMarioGuy"
         author_email: "gman36147@gmail.com"
         message: "ref prices fetching"
-        add: "ref-prices.json --force"
+        add: "ref-prices.json"
+        push: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -33,4 +33,4 @@ jobs:
         message: "ref prices fetching"
         add: "ref-prices.json"
         push: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}

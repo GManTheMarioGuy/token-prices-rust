@@ -4,12 +4,12 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - '**/*.rs'
+      - 'src/main.rs'
       - '.github/workflows/test.yml'
   pull_request:
     branches: [ "main" ]
     paths:
-      - '**/*.rs'
+      - 'src/main.rs'
       - '.github/workflows/test.yml'
   schedule:
     - cron: "*/15 * * * *"

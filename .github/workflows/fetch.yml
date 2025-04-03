@@ -5,12 +5,12 @@ on:
     branches: [ "main" ]
     paths:
       - 'src/main.rs'
-      - '.github/workflows/test.yml'
+      - '.github/workflows/fetch.yml'
   pull_request:
     branches: [ "main" ]
     paths:
       - 'src/main.rs'
-      - '.github/workflows/test.yml'
+      - '.github/workflows/fetch.yml'
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:

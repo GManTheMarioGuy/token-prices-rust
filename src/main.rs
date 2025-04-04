@@ -20,8 +20,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     }
 
-    let file = File::create("./ref-prices.json")?;
-    serde_json::to_writer(file, &picked_tokens)?;
+    println!("{}", serde_json::to_string_pretty(&picked_tokens)?);
 
     Ok(())
 }

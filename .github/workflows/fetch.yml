@@ -45,7 +45,7 @@ jobs:
       run: cargo build --verbose
 
     - name: Run application
-      run: cargo run
+      run: cargo run > ref-prices.json
 
     - name: Commit changes
       uses: endbug/add-and-commit@v9

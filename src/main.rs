@@ -1,7 +1,6 @@
 use reqwest::blocking::get;
 use serde_json::Value;
 use std::collections::HashMap;
-use std::fs::File;
 
 const TOKENS: [&str; 3] = [
     "meta-token.near",
@@ -20,7 +19,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     }
 
-    println!("{}", serde_json::to_string_pretty(&picked_tokens)?);
+    println!("{}", serde_json::to_string(&picked_tokens)?);
 
     Ok(())
 }

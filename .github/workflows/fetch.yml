@@ -51,3 +51,4 @@ jobs:
         author_email: "gman36147@gmail.com"
         add: "ref-prices.json --force"
         message: "ref prices fetching"
+        github_token: ${{ secrets.GITHUB_TOKEN }}

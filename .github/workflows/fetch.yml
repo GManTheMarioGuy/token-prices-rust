@@ -45,11 +45,9 @@ jobs:
       run: cargo run > ref-prices.json
 
     - name: Commit changes
-      uses: endbug/add-and-commit@v9
+      uses: EndBug/add-and-commit@v9
       with:
         author_name: "GManTheMarioGuy"
         author_email: "gman36147@gmail.com"
+        add: "ref-prices.json --force"
         message: "ref prices fetching"
-        add: "ref-prices.json"
-        push: true
-        github_token: ${{ secrets.GITHUB_TOKEN }}

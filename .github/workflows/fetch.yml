@@ -25,12 +25,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set up Rust 1.85.1
+    - name: Set up Rust
       uses: actions-rs/toolchain@v1
       with:
         toolchain: '1.85.1'
 
-    - name: Cache cargo dependencies
+    - name: Cache dependencies
       uses: actions/cache@v3
       with:
         path: |
@@ -44,10 +44,10 @@ jobs:
     - name: Build
       run: cargo build --verbose
 
-    - name: Run application
+    - name: Run
       run: cargo run > ref-prices.json
 
-    - name: Commit changes
+    - name: Commit
       uses: endbug/add-and-commit@v9
       with:
         author_name: "GManTheMarioGuy"
